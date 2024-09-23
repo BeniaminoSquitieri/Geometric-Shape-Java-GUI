@@ -1,1 +1,4 @@
 # ProgettoSE
+This project was developed for the System Software Engineering course. The purpose of this project is to create a Java interface through which the user can draw different types of geometric shapes and interact with them by performing operations such as resizing, changing the color, size, etc. Finally, the various changes made can be saved to a file so that when the dashboard is reopened, the user can resume from where they left off. The project also aimed to put into practice the principles of Scrum.
+
+Scrum is an agile framework used in software development, where teams work in iterative cycles called "sprints" to deliver incremental improvements of the product. It emphasizes collaboration, flexibility, and continuous feedback to adapt to changing requirements and improve project outcomes.
