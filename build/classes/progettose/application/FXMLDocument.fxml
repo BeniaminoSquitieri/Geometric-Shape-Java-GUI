@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="753.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="progettose.application.FXMLDocumentController">
+    <children>
+        <MenuBar maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="32.0" prefWidth="1300.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                        <MenuItem fx:id="loadButton" mnemonicParsing="false" onAction="#handleLoad" text="Load" />
+                        <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#handleNewDraw" text="New" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" onShowing="#checkUndo" text="Edit">
+                    <items>
+                        <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" onAction="#undoPreviousAction" text="Undo" />
+                    </items>
+                </Menu>
+            </menus>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </MenuBar>
+        <VBox layoutX="351.0" layoutY="32.0" prefHeight="711.0" prefWidth="1310.0" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="134.0" prefWidth="1300.0" spacing="10.0">
+                    <children>
+                        <VBox alignment="CENTER" fillWidth="false" prefHeight="134.0" prefWidth="470.0">
+                            <children>
+                        <HBox>
+                           <children>
+                                      <HBox alignment="CENTER" prefHeight="106.0" prefWidth="344.0" style="-fx-background-color: white; -fx-border-color: black;">
+                                          <children>
+                                              <Pane fx:id="lineShapeMenuItem" onMouseClicked="#clickLine" prefHeight="200.0" prefWidth="115.0">
+                                                  <children>
+                                                      <Line endX="-19.600013732910156" endY="-3.814697265625E-6" layoutX="116.0" layoutY="52.0" startX="-100.0" strokeWidth="6.0" />
+                                                  </children>
+                                                  <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                  </cursor>
+                                              </Pane>
+                                              <Pane fx:id="ellipseShapeMenuItem" onMouseClicked="#clickEllipse" prefHeight="200.0" prefWidth="115.0">
+                                                  <children>
+                                                      <Ellipse fill="WHITE" layoutX="57.0" layoutY="52.0" radiusX="41.0" radiusY="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" />
+                                                  </children>
+                                                  <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                  </cursor>
+                                              </Pane>
+                                              <Pane fx:id="rectangleShapeMenuItem" onMouseClicked="#clickRect" prefHeight="200.0" prefWidth="115.0">
+                                                  <children>
+                                                      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="46.0" layoutX="12.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="6.0" width="91.0" />
+                                                  </children>
+                                                  <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                  </cursor>
+                                              </Pane>
+                                          </children>
+                                      </HBox>
+                              <VBox prefHeight="106.0" prefWidth="120.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#rotateLeft" prefHeight="26.0" prefWidth="99.0" text="ROTATE L">
+                                       <VBox.margin>
+                                          <Insets left="15.0" top="15.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#rotateRight" prefHeight="26.0" prefWidth="99.0" text="ROTATE R">
+                                       <VBox.margin>
+                                          <Insets left="15.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                                <Label text="Shape menu">
+                                    <VBox.margin>
+                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                            </children>
+                        </VBox>
+                  <Line endX="-100.0" endY="120.0" startX="-100.0" startY="-2.0" />
+                  <VBox fillWidth="false" prefHeight="134.0" prefWidth="259.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="99.0" prefWidth="274.0">
+                           <children>
+                              <TextField fx:id="textBox" onAction="#insertText" prefHeight="27.0" prefWidth="139.0" promptText="Content">
+                                 <font>
+                                    <Font name="Al Tarikh Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <ComboBox fx:id="textSizeBox" onAction="#setFontSize" prefHeight="26.0" prefWidth="91.0" promptText="Aa" visibleRowCount="20">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                        <Label text="Text menu" />
+                     </children>
+                  </VBox>
+                  <Line endX="-100.0" endY="120.0" startX="-100.0" startY="-2.0" />
+                        <VBox prefHeight="107.0" prefWidth="213.0">
+                            <children>
+                                <VBox prefHeight="80.0" prefWidth="160.0">
+                                    <children>
+                                        <CheckBox fx:id="gridCheckBox" mnemonicParsing="false" text="Grid on/off">
+                                            <VBox.margin>
+                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </CheckBox>
+                                        <Label fx:id="gridLabel1" text="Grid size:">
+                                            <VBox.margin>
+                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <Slider fx:id="gridSlider" majorTickUnit="50.0" max="500.0" min="50.0" onMouseReleased="#zoomGrid" showTickLabels="true" showTickMarks="true">
+                                            <VBox.margin>
+                                                <Insets left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Slider>
+                                    </children>
+                                </VBox>
+                                <Label fx:id="gridLabel2" text="Grid options" textAlignment="JUSTIFY">
+                                    <VBox.margin>
+                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                            </children>
+                        </VBox>
+                  <Line endX="-100.0" endY="120.0" startX="-100.0" startY="-2.0" />
+                        <VBox alignment="CENTER" fillWidth="false" prefHeight="134.0" prefWidth="261.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="46.0" prefWidth="254.0">
+                                    <children>
+                                        <Label prefHeight="18.0" prefWidth="100.0" text="Border color: ">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </Label>
+                                        <ColorPicker fx:id="borderPicker" onAction="#handleBorderColour">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <Blend />
+                                            </effect>
+                                        </ColorPicker>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="54.0" prefWidth="253.0">
+                                    <children>
+                                        <Label prefHeight="18.0" prefWidth="100.0" text="Interior color:">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </Label>
+                                        <ColorPicker fx:id="interiorPicker" onAction="#handleInteriorColour">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </ColorPicker>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                                <Label text="Color options">
+                                    <VBox.margin>
+                                        <Insets left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#combPressedHandler" prefHeight="557.0" prefWidth="1279.0">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+               <content>
+                  <Group>
+                     <children>
+                              <Pane fx:id="canvas" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragDetected="#onCanvasDragDetected" onMouseDragReleased="#onCanvasMouseDragReleased" prefHeight="2180.0" prefWidth="5100.0" style="-fx-background-color: white;">
+                           <children>
+                              <GridPane fx:id="grid" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="2180.0" prefWidth="5100.0">
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                              </Pane>
+                     </children>
+                  </Group>
+               </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutY="744.0" prefHeight="26.0" prefWidth="1280.0">
+         <children>
+            <Label text="Zoom">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="25%" />
+            <Slider fx:id="zoomSlider" blockIncrement="25.0" max="200.0" min="25.0" minorTickCount="0" onMouseReleased="#changeZoom" prefHeight="24.0" prefWidth="241.0" showTickMarks="true" snapToTicks="true" value="100.0" />
+            <Label text="200%" />
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>
